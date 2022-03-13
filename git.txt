@@ -1,0 +1,148 @@
+1. Setting your Git username/email for every repository on your System
+
+git config --global user.name "<username>"
+git config --global user.email "<email>"
+
+2.	Confirm that you have set the Git username/email correctly
+
+git config --global user.name
+git config --global user.email
+
+3.	Initialize a local Git repository
+
+git init
+
+4.	Clone your Git Reposistory
+
+git clone <repo_name>
+
+5.	Pull changes from remote repository
+
+git pull <repo_name>
+
+6.	Check Reposistory branch
+
+git branch
+
+7.	Check All Branch available on Repository
+
+git branch -a
+
+8.	Switch to existing Branch
+
+git checkout <existing_branch>
+
+9.	Create new Branch
+
+git checkout -b <new_branch>
+
+10.	Delete a branch
+
+git branch -d <branch_name>
+
+11.	Rename a local branch
+
+git branch -m <old_branch_name> <new_branch_name>
+
+12. Display the state of the repository and staging area
+
+git status
+
+13.	track the difference between the changes made on a file
+
+git diff <file_name>
+
+14.	View changes
+
+git log
+
+15.	selects that file, and moves it to the staging area, marking it for inclusion in the next commit
+
+git add <changes_path>
+
+16.	Remove a file (or folder)
+
+git rm -r <file-name.txt>
+
+17.	Discard changes to a file
+
+git checkout -- <file-name.txt>
+
+18.	captures a snapshot of the project's currently staged changes
+
+git commit -m "<commit_message>"
+
+19.	Modify the most recent commit
+
+git commit -amend
+
+20.	Switch branches without committing the current branch
+
+git stash
+
+21.	Check the Stored Stashes
+
+git stash list
+
+22.	Restore stash
+
+git stash pop
+
+23.	Reapply commits on top of another base trip
+
+git rebase -i <branch_name>
+
+24.	Upload local repository content to a remote repository
+
+git push
+
+
+Scenario 1 : Raise PR 
+
+git pull <repo_name>
+cd <repo_name>
+git checkout -b <new-branch>
+#do some changes
+git status
+git add <changes_path>
+git status
+git commit -m "commit_message"
+git log
+git checkout <base_branch>
+git pull --recurse-submodules
+git checkout <new-branch>
+git rebase -i <base_branch>
+git push
+
+
+Scenario 2 : GIT Commit in recent PR
+
+git pull <repo_name>
+cd <repo_name>
+git checkout -b <existing-branch>
+#do some changes
+git status
+git add <changes_path>
+git status
+git log
+git commit --amend
+git push -f
+
+
+
+
+Scenario 3 : GIT Commit in recent PR with conflicting Issue
+
+
+git pull <repo_name>
+cd <repo_name>
+#already on base branch if not move to base branch
+git checkout <extsting_branch>
+git rebase -i <base_branch>
+git status
+#resolve the conflict here
+git add <resolved_file_path>
+git status
+git rebase --continue
+git log
+git push --force
