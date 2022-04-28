@@ -146,3 +146,9 @@ git status
 git rebase --continue
 git log
 git push --force
+
+
+Scenario 4 : GIT revert local commands
+
+git reflog
+git reset --hard <command_id>
